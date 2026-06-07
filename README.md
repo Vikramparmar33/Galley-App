@@ -44,11 +44,11 @@ ViewModel (GalleryViewModel)
 | **Persistence** (`PersistentStorage`) | Core Data stack + background-context saves |
 
 ### Design patterns used
-- **MVVM** — UI ⇄ ViewModel via closures (`reloadCollection`, `showError`).
+- **MVVM** — Design Pattern. Clean separation of UI, Business Logic, and Data layers
 - **Repository pattern** — `PhotoRepository` protocol abstracts the data source.
-- **Facade** — `PhotoManager` gives the ViewModel a simple storage API.
-- **Singleton** — `PersistentStorage.shared`, `PhotoService.shared`.
 - **Dependency abstraction via protocols** — easy to mock/test.
+- **API Manager** layer for centralized networking
+- **AuthInterceptor** for handling authentication logic
 
 ### Offline strategy
 - **Core Data** stores the photo **list/metadata** (id + URL) → drives the gallery offline.
@@ -64,18 +64,23 @@ ViewModel (GalleryViewModel)
 GalleryApp/
 ├── Application/            # AppDelegate, SceneDelegate
 ├── Core/
-│   ├── Extenstion/         # Encodable, ScrollView helpers
-│   ├── Models/             # BaseResponse, MetaData
+│   ├── Extenstion/         # Encodable
+│   ├── Networking/         # APIManager, AuthInterceptor
 │   └── OfflineStorage/
 │       ├── CoreDataSupportFiles/   # CDPhoto, PersistentStorage
 │       ├── Manager/                # PhotoManager
 │       └── Repository/             # PhotoDataRepository
+│   ├── UserDefaults/       # UserDefaultsManager
+│   ├── Security/           # KeychainManager
+│   ├── Navigation/         # NavigationManager 
+│   ├── SocialLogin/        # GoogleLoginManager
+│   ├── AppToast/           # AppToastManager 
 └── Features/
-    └── Splash/
-    └── Login/
-    ├── Gallery/            # GalleryVC, GalleryVM, PhotoCell, Photo, PhotoService
-    ├── PhotoDetail/        # PhotoDetailVC (full-screen + zoom)
-    └── Profile/
+│    └── Splash/
+│    └── Login/
+│    ├── Gallery/            # GalleryVC, GalleryVM, PhotoCell, Photo, PhotoService
+│       └── PhotoDetail/     # PhotoDetailVC (full-screen + zoom)     
+│    └── Profile/
 ```
 
 ---
@@ -133,4 +138,5 @@ All third-party libraries are managed with **Swift Package Manager** (already pi
 ## 👤 Author
 
 Vikram Parmar
+
 
