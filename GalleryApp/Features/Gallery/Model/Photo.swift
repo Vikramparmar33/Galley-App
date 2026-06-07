@@ -8,16 +8,18 @@
 import Foundation
 
 struct Photo: Decodable, Sendable {
-    let id: String
+    let photoId: String
     let downloadURL: String
+    var imageData: Data?   // optional for offline caching
 
-    init(id: String, downloadURL: String) {
-        self.id = id
+    init(photoId: String, downloadURL: String, imageData: Data?) {
+        self.photoId = photoId
         self.downloadURL = downloadURL
+        self.imageData = imageData
     }
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case photoId = "id"
         case downloadURL = "download_url"
     }
 }

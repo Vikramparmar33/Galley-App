@@ -10,6 +10,7 @@
 
 // MARK: - Server
 SERVER_BASE_URL = https:/$()/picsum.photos/v2
+PHOTO_THUMBNAIL_URL = https:/$()/picsum.photos/id
 
 // MARK: - Google
 GOOGLE_CLIENT_ID = 198631883742-3t3on113ehkmssh68566mr135sp9u511.apps.googleusercontent.com

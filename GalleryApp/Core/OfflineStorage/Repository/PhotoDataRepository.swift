@@ -8,10 +8,12 @@
 import Foundation
 
 import CoreData
+import UIKit
 
 protocol PhotoRepository {
     func save(photos: [Photo])
     func getAll() -> [Photo]
+    func getPhotosForPage(page: Int) -> [Photo]
 }
 
 struct PhotoDataRepository : PhotoRepository {
@@ -21,7 +23,7 @@ struct PhotoDataRepository : PhotoRepository {
 
         PersistentStorage.shared.performBackgroundTask { context in
 
-            photos.forEach { upsert($0, in: context) }
+            photos.forEach { insert($0, in: context) }
 
             if context.hasChanges {
                 do {
@@ -33,16 +35,27 @@ struct PhotoDataRepository : PhotoRepository {
         }
     }
 
-    private func upsert(_ photo: Photo, in context: NSManagedObjectContext) {
+    private func insert(_ photo: Photo, in context: NSManagedObjectContext) {
 
         let request = NSFetchRequest<CDPhoto>(entityName: "CDPhoto")
-        request.predicate = NSPredicate(format: "id == %@", photo.id)
+        request.predicate = NSPredicate(format: "photoId == %@", photo.photoId)
         request.fetchLimit = 1
 
-        // Same context me fetch karo, warna object-context mismatch hoga.
-        let cdPhoto = (try? context.fetch(request))?.first ?? CDPhoto(context: context)
-        cdPhoto.id = photo.id
-        cdPhoto.downloadURL = photo.downloadURL
+        let cdPhoto: CDPhoto
+        
+        if let existing = (try? context.fetch(request))?.first {
+            cdPhoto = existing
+        } else {
+            cdPhoto = CDPhoto(context: context)
+            cdPhoto.id = UUID()
+        }
+
+        cdPhoto.photoId = Int64(photo.photoId) ?? 0
+        cdPhoto.imageURL = photo.downloadURL
+        
+        // ADD THIS FOR OFFLINE SUPPORT
+        cdPhoto.imageData = photo.imageData
+        
     }
     
     func getAll() -> [Photo] {
@@ -56,17 +69,20 @@ struct PhotoDataRepository : PhotoRepository {
         return photos
     }
     
-    func fetchById(_ id: String) -> CDPhoto? {
-
-        let fetchRequest = NSFetchRequest<CDPhoto>(entityName: "CDPhoto")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-        fetchRequest.fetchLimit = 1
+    func getPhotosForPage(page: Int) -> [Photo] {
+        let request = CDPhoto.fetchRequest()
+        request.fetchLimit = 20
+        request.fetchOffset = (page - 1) * 20
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "photoId", ascending: true)
+        ]
         
         do {
-            return try PersistentStorage.shared.context.fetch(fetchRequest).first
+            let result = try PersistentStorage.shared.context.fetch(request)
+            return result.compactMap { $0.convertToPhoto() }
         } catch {
-            debugPrint("FetchById error:", error)
-            return nil
+            debugPrint("Fetch error:", error)
+            return []
         }
     }
     

@@ -8,6 +8,8 @@
 	<string>$(SERVER_BASE_URL)</string>
 	<key>GOOGLE_CLIENT_ID</key>
 	<string>$(GOOGLE_CLIENT_ID)</string>
+	<key>PHOTO_THUMBNAIL_URL</key>
+	<string>$(PHOTO_THUMBNAIL_URL)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

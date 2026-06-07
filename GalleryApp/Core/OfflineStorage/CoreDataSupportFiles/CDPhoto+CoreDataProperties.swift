@@ -2,7 +2,7 @@
 //  CDPhoto+CoreDataProperties.swift
 //  GalleryApp
 //
-//  Created by Vikram's Macbook on 06/06/26.
+//  Created by Vikram's Macbook on 07/06/26.
 //
 //
 
@@ -16,8 +16,10 @@ extension CDPhoto {
         return NSFetchRequest<CDPhoto>(entityName: "CDPhoto")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var downloadURL: String?
+    @NSManaged public var imageURL: String?
+    @NSManaged public var id: UUID?
+    @NSManaged public var imageData: Data?
+    @NSManaged public var photoId: Int64
 
 }
 
@@ -26,17 +28,16 @@ extension CDPhoto : Identifiable {
 }
 
 extension CDPhoto {
-    
+
     func convertToPhoto() -> Photo? {
-        guard let id = self.id,
-              let downloadURL = self.downloadURL else {
+        guard let imageURL = self.imageURL else {
             return nil
         }
-        
+
         return Photo(
-            id: id,
-            downloadURL: downloadURL
+            photoId: String(self.photoId),
+            downloadURL: imageURL,
+            imageData: self.imageData
         )
     }
-    
 }

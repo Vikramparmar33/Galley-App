@@ -31,28 +31,69 @@ class PhotoCell: UICollectionViewCell {
         hideSkeleton()
     }
 
+//    func configure(with photo: Photo) {
+//
+//        // Picsum supports on-the-fly resizing by id. Fetch a thumbnail instead of the full image.
+//        let side = Int(200 * UIScreen.main.scale)
+//
+//        guard let url = URL(
+//            string: "https://picsum.photos/id/\(photo.id)/\(side)/\(side)"
+//        ) else {
+//            return
+//        }
+//
+//        imageView.kf.setImage(
+//            with: url,
+//            placeholder: UIImage(named: "img_placeholder"),
+//            options: [
+//                .transition(.fade(0.2)),
+//                .cacheOriginalImage
+//            ]
+//        ) { [weak self] result in
+//            guard let self = self else { return }
+//            //self.handleImageResult(result)
+//        }
+//    }
+    
     func configure(with photo: Photo) {
         
-        // Picsum supports on-the-fly resizing by id. Fetch a thumbnail instead of the full image.
-        let side = Int(200 * UIScreen.main.scale)
-        
-        guard let url = URL(
-            string: "https://picsum.photos/id/\(photo.id)/\(side)/\(side)"
-        ) else {
+        // OFFLINE FIRST (Core Data)
+        if let data = photo.imageData {
+            imageView.image = UIImage(data: data)
             return
         }
+        
+        // 🌐 ONLINE MODE (Thumbnail from Picsum or API URL)
+        let url = buildThumbnailURL(from: photo)
         
         imageView.kf.setImage(
             with: url,
             placeholder: UIImage(named: "img_placeholder"),
             options: [
                 .transition(.fade(0.2)),
-                .cacheOriginalImage
+                .cacheOriginalImage,
+                .scaleFactor(UIScreen.main.scale),
+                .processor(DownsamplingImageProcessor(size: imageView.bounds.size))
             ]
-        ) { [weak self] result in
-            guard let self = self else { return }
-            //self.handleImageResult(result)
+        )
+        return
+        
+        // fallback
+        //imageView.image = UIImage(named: "img_placeholder")
+    }
+    
+    private func buildThumbnailURL(from photo: Photo) -> URL? {
+
+        let size = Int(200 * UIScreen.main.scale)
+
+        // Picsum thumbnail
+        if photo.downloadURL.contains("picsum.photos") {
+            let thumbnailURL = AppEnvironment.photoThumbnailURL
+            return URL(string: thumbnailURL + "/\(photo.photoId)/\(size)/\(size)")
         }
+
+        // normal API URL fallback
+        return URL(string: photo.downloadURL)
     }
     
     private func handleImageResult(_ result: Result<RetrieveImageResult, KingfisherError>) {

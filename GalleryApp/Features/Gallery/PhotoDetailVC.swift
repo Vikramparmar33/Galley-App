@@ -101,7 +101,7 @@ class PhotoDetailVC: UIViewController {
 
         // Pehle se cached thumbnail ho to placeholder ki tarah turant dikha do.
         let side = Int(200 * UIScreen.main.scale)
-        let thumbKey = "https://picsum.photos/id/\(photo.id)/\(side)/\(side)"
+        let thumbKey = "https://picsum.photos/id/\(photo.photoId)/\(side)/\(side)"
         let placeholder = ImageCache.default.retrieveImageInMemoryCache(forKey: thumbKey)
 
         // MARK: Kingfisher — full-res load, fade-in, activity indicator.

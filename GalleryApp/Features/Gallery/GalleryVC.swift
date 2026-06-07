@@ -33,7 +33,8 @@ class GalleryVC: UIViewController {
         setupUI()
         setupRefreshControl()
         bindViewModel()
-        viewModel.loadInitialData()
+        printDBPath()
+        viewModel.loadData(isInitialLoad: true)
     }
     
     // MARK: - Functions
@@ -64,7 +65,12 @@ class GalleryVC: UIViewController {
     }
     
     @objc func handleRefresh() {
-        viewModel.refresh()
+        viewModel.loadData(isInitialLoad: false)
+    }
+    
+    private func printDBPath() {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        debugPrint(path[0])
     }
 
     // MARK: - Bindings

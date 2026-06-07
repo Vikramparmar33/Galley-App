@@ -51,6 +51,8 @@
 		BCBA5E322FD5261800C1774D /* GalleryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA5E312FD5261800C1774D /* GalleryRequest.swift */; };
 		BCBA5E352FD53E0E00C1774D /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA5E342FD53E0E00C1774D /* AppEnvironment.swift */; };
 		BCBA5E3B2FD54B7F00C1774D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BCBA5E3A2FD54B7F00C1774D /* Kingfisher */; };
+		BCBA5E462FD58BE400C1774D /* CDPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA5E442FD58BE400C1774D /* CDPhoto+CoreDataClass.swift */; };
+		BCBA5E472FD58BE400C1774D /* CDPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA5E452FD58BE400C1774D /* CDPhoto+CoreDataProperties.swift */; };
 		BCC2463D2FD47FD000BC95E7 /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC2463C2FD47FD000BC95E7 /* LoadingFooterView.swift */; };
 		BCC246462FD48BBC00BC95E7 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = BCC246452FD48BBC00BC95E7 /* Toast */; };
 		BCC246482FD48E0F00BC95E7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC246472FD48E0F00BC95E7 /* UIViewController+Extension.swift */; };
@@ -65,8 +67,6 @@
 		BCC30EEA2FD3C59E0021E52B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCC30EE82FD3C59E0021E52B /* LaunchScreen.storyboard */; };
 		BCC30EF52FD3C7750021E52B /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC30EF42FD3C7750021E52B /* Encodable+Extension.swift */; };
 		BCC30F002FD3C85A0021E52B /* PersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC30EFF2FD3C85A0021E52B /* PersistentStorage.swift */; };
-		BCC30F032FD3C8DC0021E52B /* CDPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC30F012FD3C8DC0021E52B /* CDPhoto+CoreDataClass.swift */; };
-		BCC30F042FD3C8DC0021E52B /* CDPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC30F022FD3C8DC0021E52B /* CDPhoto+CoreDataProperties.swift */; };
 		BCC30F072FD3C97C0021E52B /* PhotoDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC30F062FD3C97C0021E52B /* PhotoDataRepository.swift */; };
 		BCC30F0A2FD3C9AF0021E52B /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC30F092FD3C9AF0021E52B /* PhotoManager.swift */; };
 		BCC30F112FD3CA370021E52B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC30F102FD3CA370021E52B /* Photo.swift */; };
@@ -120,6 +120,8 @@
 		BCBA5E312FD5261800C1774D /* GalleryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryRequest.swift; sourceTree = "<group>"; };
 		BCBA5E342FD53E0E00C1774D /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		BCBA5E362FD53E7800C1774D /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
+		BCBA5E442FD58BE400C1774D /* CDPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BCBA5E452FD58BE400C1774D /* CDPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BCC2463C2FD47FD000BC95E7 /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooterView.swift; sourceTree = "<group>"; };
 		BCC246472FD48E0F00BC95E7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		BCC246492FD4919400BC95E7 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -135,8 +137,6 @@
 		BCC30EEB2FD3C59E0021E52B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC30EF42FD3C7750021E52B /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		BCC30EFF2FD3C85A0021E52B /* PersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStorage.swift; sourceTree = "<group>"; };
-		BCC30F012FD3C8DC0021E52B /* CDPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BCC30F022FD3C8DC0021E52B /* CDPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BCC30F062FD3C97C0021E52B /* PhotoDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataRepository.swift; sourceTree = "<group>"; };
 		BCC30F092FD3C9AF0021E52B /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		BCC30F102FD3CA370021E52B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -406,8 +406,8 @@
 		BCC30EFE2FD3C8480021E52B /* CoreDataSupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				BCC30F012FD3C8DC0021E52B /* CDPhoto+CoreDataClass.swift */,
-				BCC30F022FD3C8DC0021E52B /* CDPhoto+CoreDataProperties.swift */,
+				BCBA5E442FD58BE400C1774D /* CDPhoto+CoreDataClass.swift */,
+				BCBA5E452FD58BE400C1774D /* CDPhoto+CoreDataProperties.swift */,
 				BCC30EFF2FD3C85A0021E52B /* PersistentStorage.swift */,
 			);
 			path = CoreDataSupportFiles;
@@ -624,7 +624,6 @@
 				BCBA5E2A2FD51A1700C1774D /* Endpoint.swift in Sources */,
 				BCBA5E2C2FD51C7E00C1774D /* APIManager.swift in Sources */,
 				BCC30F252FD3D6170021E52B /* GalleryVC.swift in Sources */,
-				BCC30F032FD3C8DC0021E52B /* CDPhoto+CoreDataClass.swift in Sources */,
 				BCC30F142FD3CA830021E52B /* GalleryService.swift in Sources */,
 				BCC30F002FD3C85A0021E52B /* PersistentStorage.swift in Sources */,
 				BC5471732FD3F91D008852FA /* LoginVM.swift in Sources */,
@@ -640,13 +639,14 @@
 				BCC30F0A2FD3C9AF0021E52B /* PhotoManager.swift in Sources */,
 				BCB34FE02FD41ED500BC0318 /* FontManager.swift in Sources */,
 				BCBA5E282FD519EA00C1774D /* APILogger.swift in Sources */,
+				BCBA5E462FD58BE400C1774D /* CDPhoto+CoreDataClass.swift in Sources */,
 				BC5F69172FD4475200A77354 /* CustomAppBarView.swift in Sources */,
+				BCBA5E472FD58BE400C1774D /* CDPhoto+CoreDataProperties.swift in Sources */,
 				BCC30EDD2FD3C59C0021E52B /* SceneDelegate.swift in Sources */,
 				BCB34FE42FD41FD300BC0318 /* UIButtonX.swift in Sources */,
 				BC5471772FD3FA0F008852FA /* ProfileVM.swift in Sources */,
 				BCB34FEA2FD421A600BC0318 /* CustomButtonView.swift in Sources */,
 				BC54717D2FD40054008852FA /* TabbarVC.swift in Sources */,
-				BCC30F042FD3C8DC0021E52B /* CDPhoto+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

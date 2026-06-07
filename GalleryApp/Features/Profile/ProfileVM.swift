@@ -9,6 +9,7 @@ import Foundation
 
 final class ProfileViewModel {
 
+    // MARK: - Variables
     private(set) var user: GoogleUser?
 
     // MARK: - Load User
@@ -17,7 +18,6 @@ final class ProfileViewModel {
     }
 
     // MARK: - User Info
-
     var name: String {
         user?.name ?? ""
     }

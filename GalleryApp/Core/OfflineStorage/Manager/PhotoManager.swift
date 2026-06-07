@@ -19,4 +19,7 @@ struct PhotoManager {
         return photoDataRepository.getAll()
     }
     
+    func fetchPhotosForPage(page: Int) -> [Photo] {
+        return photoDataRepository.getPhotosForPage(page: page)
+    }
 }

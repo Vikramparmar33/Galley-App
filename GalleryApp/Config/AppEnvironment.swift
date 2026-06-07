@@ -18,6 +18,14 @@ struct AppEnvironment {
         }
         return url
     }
+    
+    // MARK: - Photo Thumbnail
+    static var photoThumbnailURL: String {
+        guard let url = infoDictionary?["PHOTO_THUMBNAIL_URL"] as? String, !url.isEmpty else {
+            fatalError("PHOTO_THUMBNAIL_URL not set in Info.plist / xcconfig")
+        }
+        return url
+    }
 
     // MARK: - Google
     static var googleClientID: String {
