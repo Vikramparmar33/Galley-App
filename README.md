@@ -135,6 +135,29 @@ All third-party libraries are managed with **Swift Package Manager** (already pi
 
 ---
 
+## 📸 Screenshots
+
+### Splash Screen
+![Splash](Screenshots/splash.png)
+
+### Login Screen
+![Login](Screenshots/login.png)
+
+### Google Sign-In
+![Google Sign-In](Screenshots/google-signin.png)
+
+### Gallery Screen
+![Gallery](Screenshots/gallery.png)
+
+### Photo Detail Screen
+![Detail](Screenshots/photo-detail.png)
+
+### Profile Screen
+![Profile](Screenshots/profile.png)
+
+### Sign Out State
+![Sign Out](Screenshots/signout.png)
+
 ## 👤 Author
 
 Vikram Parmar
